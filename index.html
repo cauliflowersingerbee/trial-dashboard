@@ -14,11 +14,16 @@
       [v-cloak] {
         display: none;
       }
+      input{ 
+        margin: 10px;
+        display: block;
+      }
     </style>
   </head>
   <body>
     <div id="app" v-cloak>
-      {{greeting}}
+      <!--{{greeting}}-->
+      <custom-form/>
       <!-- directives: a way to connect elements in html to
            vue js-->
       <hr/>
@@ -54,8 +59,29 @@
             }
           }
       })
+      //Creating component function
+      app.component('custom-form', {
+        template: `
+          <form @submit="handleSubmit">
+            <h1>{{title}}</h1>
+            <input type="email"/> 
+            <input type="password"/>  
+          </form>
+        `, 
+        data: function() {
+          return{
+            title: 'Login Form'
+          }
+        },
+        methods: {
+          handleSubmit() {
+             console.log('Your form has been submitted')
+          }
+        }
+      })
       //mounting application to html
       app.mount('#app')
     </script>
   </body>
 </html>
+ 
