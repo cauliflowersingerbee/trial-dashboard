@@ -5,10 +5,27 @@
     <link rel="icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trial Dashboard</title>
+    <style>
+      .box {
+        background-color: cornflowerblue;
+        height: 200px;
+        width: 200px;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
       {{greeting}}
+      <!-- directives: a way to connect elements in html to
+           vue js-->
+      <hr/>
+        <!--v-model directive: two-way data binding-->
+         <input v-model="greeting" />
+      <hr/>
+      <!--v-if directive-->
+      <div v-if="isVisible" class="box">
+      </div>
+      <hr/>
     </div>
     <script src="https://unpkg.com/vue@3"></script>
     <script type="module" src="/src/main.js"></script>
@@ -17,7 +34,8 @@
         //options object
         data: function(){
           return {
-            greeting: 'Hello dashboard!'
+            greeting: 'Hello dashboard!',
+            isVisible: true
           }
         }
       })
