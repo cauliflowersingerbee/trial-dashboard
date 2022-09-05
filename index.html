@@ -23,10 +23,12 @@
            vue js-->
       <hr/>
         <!--v-model directive: two-way data binding-->
-         <input v-model="greeting" />
+         <input @keyup.enter="greet" v-model="greeting" />
       <hr/>
-      <!--v-on directive: specific for events-->
-      <button>Show Box</button>
+      <!--v-on directive: specific for events
+      eg <button v-on:click="isVisible = !isVisible">Show Box</button>
+      -->
+      <button @click="toggleBox">Show Box</button>
       <!--v-if directive-->
       <div v-if="isVisible" class="box">
       </div>
@@ -42,7 +44,15 @@
             greeting: 'Hello dashboard!',
             isVisible: false, 
           }
-        }
+        },
+        methods: {
+            toggleBox() {
+              this.isVisible = !this.isVisible;  
+            }, 
+            greet() {
+              console.log(this.greeting)
+            }
+          }
       })
       //mounting application to html
       app.mount('#app')
