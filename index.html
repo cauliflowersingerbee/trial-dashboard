@@ -11,10 +11,13 @@
         height: 200px;
         width: 200px;
       }
+      [v-cloak] {
+        display: none;
+      }
     </style>
   </head>
   <body>
-    <div id="app">
+    <div id="app" v-cloak>
       {{greeting}}
       <!-- directives: a way to connect elements in html to
            vue js-->
@@ -35,7 +38,7 @@
         data: function(){
           return {
             greeting: 'Hello dashboard!',
-            isVisible: true
+            isVisible: true, 
           }
         }
       })
